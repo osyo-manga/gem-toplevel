@@ -25,29 +25,29 @@ Or install it yourself as:
 require "toplevel"
 
 # private method Object#hoge.
-def hoge
-	:hoge
+def toplevel_method
+	:toplevel_method
 end
 
 using Toplevel.local {
 	# A.rb only method
-	def foo
-		:foo
+	def local_method
+		:local_method
 	end
 }
 
-p hoge
-p foo
+p toplevel_method  # => :toplevel_method
+p local_method     # => :local_method
 ```
 
 ```ruby
 # B.rb
 require_relative "./B.rb"
 
-p hoge   # => :hoge
+p toplevel_method  # => :toplevel_method
 
-# Error: undefined local variable or method `foo' for main:Object (NameError)
-p foo
+# Error: undefined local variable or method `local_method' for main:Object (NameError)
+p local_method
 ```
 
 
