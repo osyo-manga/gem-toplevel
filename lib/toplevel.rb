@@ -6,10 +6,6 @@ module Toplevel
 	def local &block
 		Module.new {
 			refine Object do
-# 				p self
-# 				p self.instance_methods(false)
-# 				p Object.instance_methods(false)
-
 				old_methods = instance_methods false
 				class_eval &block
 				new_methods = instance_methods false
